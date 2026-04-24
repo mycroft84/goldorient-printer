@@ -18,7 +18,7 @@ new class extends Component
     #[On('update-status')]
     public function refreshData()
     {
-        $this->last_print = now()->format('Y-m-d H:i:s');
+        $this->last_print = (new \App\Business\History())->lastDate();
     }
 
     public function render()
