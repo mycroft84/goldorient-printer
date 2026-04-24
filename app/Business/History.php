@@ -74,4 +74,13 @@ class History
             ->paginate($limit)
             ->withQueryString();
     }
+
+    public function lastDate()
+    {
+        $last = \App\Models\History::query()
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        return ($last) ? $last->created_at->format('Y-m-d H:i:s') : null;
+    }
 }
